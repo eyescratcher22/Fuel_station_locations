@@ -1,0 +1,14 @@
+{
+  "name": "distraction-free-reading-mode",
+  "version": "1.0.0",
+  "description": "WOC 2025",
+  "main": "script.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Amitesh",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
