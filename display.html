@@ -1,31 +1,61 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PERM!</title>
-    <link rel="stylesheet" href="styles.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extracted Content</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+      max-width: 800px;
+      background-color: black;
+      color: white;
+    }
+    img {
+      max-width: 100%;
+      margin: 10px 0;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+  </style>
+</head>
+<body>
+  <h1>Extracted Content</h1>
+  <div id="content">
+    <p>Loading content...</p>
+  </div>
 
- </head>
-  <body>
-    <p class="tf">Work in Progress</p>
+  <script>
    
-<style>
-  body{
-    background-color: black;
-  }
-  .tf{
-    font-size: xx-large;
-  }
-</style>
+    const extractedContent = localStorage.getItem("extractedContent");
 
-    
-  </body>
+    if (extractedContent) {
+      const { title, paragraphs, images } = JSON.parse(extractedContent);
+
+      const contentDiv = document.getElementById("content");
+      let htmlContent = "";
+
+      if (title) htmlContent += `<h2>${title}</h2>`;
+
+      if (paragraphs && paragraphs.length) {
+        htmlContent += paragraphs.map((p) => `<p>${p}</p>`).join("");
+      } else {
+        htmlContent += "<p>No paragraphs found.</p>";
+      }
+
+      if (images && images.length) {
+        htmlContent += images
+          .map((src) => `<img src="${src}" alt="Extracted Image">`)
+          .join("");
+      } else {
+        htmlContent += "<p>No images found.</p>";
+      }
+
+      contentDiv.innerHTML = htmlContent;
+    } else {
+      document.getElementById("content").innerHTML = "<p>No content available.</p>";
+    }
+  </script>
+</body>
 </html>

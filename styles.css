@@ -116,36 +116,36 @@ section{
   font-size: 16px;
   outline: none;
 }
-/* General button styling */
+
 .styled-button {
-  background-color: var(--main-color); /* Blue background */
-  color: #ffffff;           /* White text */
-  border: none;             /* No border */
-  padding: 10px 20px;       /* Padding */
-  font-size: 20px;          /* Font size */
-  cursor: pointer;          /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+  background-color: var(--main-color); 
+  color: #ffffff;          
+  border: none;            
+  padding: 10px 20px;     
+  font-size: 20px;        
+  cursor: pointer;          
+  transition: background-color 0.3s ease, transform 0.2s ease; 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/* Hover effect */
+
 .styled-button:hover {
-  background-color: white; /* Darker blue on hover */
-  transform: scale(1.05);    /* Slightly larger on hover */
+  background-color: white; 
+  transform: scale(1.05);    
   color: var(--main-color);
 }
 
-/* Active effect */
+
 .styled-button:active {
-  background-color: var(--main-color); /* Even darker blue on click */
-  transform: scale(0.95);    /* Slightly smaller when clicked */
+  background-color: var(--main-color); 
+  transform: scale(0.95); 
   color: white;
 }
 
-/* Focus effect */
+
 .styled-button:focus {
-  outline: 2px solid #0056b3; /* Outline on focus */
-  outline-offset: 2px;       /* Spacing around the outline */
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;      
 }
 
 .icons{
@@ -164,4 +164,66 @@ section{
 .icons i:hover{
   transform: translateY(-5px);
   color: var(--main-color);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #444;
+}
+
+input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: var(--main-color); 
+  color: #ffffff;          
+  border: none;            
+  padding: 10px 20px;     
+  font-size: 20px;        
+  cursor: pointer;          
+  transition: background-color 0.3s ease, transform 0.2s ease; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button:hover {
+  background-color: white; 
+  transform: scale(1.05);    
+  color: var(--main-color);
+}
+
+.reader {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.reader img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
 }
