@@ -8,44 +8,22 @@
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
-     
+      margin: 0;
+      padding: 0;
       background-color: black;
       color: white;
     }
     img {
       max-width: 100%;
-      margin: 10px 0;
+      display: block;
+      margin: 20px auto;
     }
-    #audio-player {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 8px;
-      padding: 10px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    #audio-player audio {
-      width: 200px;
-    }
-    #audio-player label {
-      font-size: 0.9em;
-      color: white;
+    .text {
+      margin: 20px;
     }
   </style>
 </head>
 <body>
-  <div id="audio-player">
-    <label for="audio">White Noise:</label>
-    <audio id="audio" controls>
-      <source src="design elements\Study with White Noise  1 Hour Focus Ambience for Homework, Reading or Test Prep.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
-
   <h1>Extracted Content</h1>
   <div id="content">
     <p>Loading content...</p>
@@ -55,28 +33,23 @@
     const extractedContent = localStorage.getItem("extractedContent");
 
     if (extractedContent) {
-      const { title, paragraphs, images } = JSON.parse(extractedContent);
-
+      const { content } = JSON.parse(extractedContent);
       const contentDiv = document.getElementById("content");
-      let htmlContent = "";
+      contentDiv.innerHTML = ""; // Clear the loading message
 
-      if (title) htmlContent += `<h2>${title}</h2>`;
-
-      if (paragraphs && paragraphs.length) {
-        htmlContent += paragraphs.map((p) => `<p>${p}</p>`).join("");
-      } else {
-        htmlContent += "<p>No paragraphs found.</p>";
-      }
-
-      if (images && images.length) {
-        htmlContent += images
-          .map((src) => `<img src="${src}" alt="Extracted Image">`)
-          .join("");
-      } else {
-        htmlContent += "<p>No images found.</p>";
-      }
-
-      contentDiv.innerHTML = htmlContent;
+      content.forEach((item) => {
+        if (item.type === "text") {
+          const p = document.createElement("p");
+          p.className = "text";
+          p.textContent = item.value;
+          contentDiv.appendChild(p);
+        } else if (item.type === "image") {
+          const img = document.createElement("img");
+          img.src = item.value;
+          img.alt = "Extracted Image";
+          contentDiv.appendChild(img);
+        }
+      });
     } else {
       document.getElementById("content").innerHTML = "<p>No content available.</p>";
     }

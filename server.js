@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const cors = require("cors");
 
 const app = express();
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
 
 app.get("/extract", async (req, res) => {
@@ -17,16 +17,26 @@ app.get("/extract", async (req, res) => {
     const response = await axios.get(url);
     const $ = cheerio.load(response.data);
 
-   
-    const title = $("title").text();
-    const paragraphs = $("p").map((i, el) => $(el).text()).get();
-    const images = $("img").map((i, el) => $(el).attr("src")).get();
+    // Remove unwanted elements (scripts, styles, and links)
+    $("script, style, link, iframe, nav, footer, header, a").remove();
 
-    res.json({
-      title,
-      paragraphs,
-      images,
+    // Extract paragraphs, headers, and images
+    const content = [];
+    $("body *").each((i, el) => {
+      const tagName = $(el).prop("tagName").toLowerCase();
+
+      if (["p", "h1", "h2", "h3", "h4", "h5", "h6"].includes(tagName)) {
+        const text = $(el).text().trim();
+        if (text) content.push({ type: "text", value: text });
+      }
+
+      if (tagName === "img") {
+        const src = $(el).attr("src");
+        if (src) content.push({ type: "image", value: new URL(src, url).href });
+      }
     });
+
+    res.json({ content });
   } catch (error) {
     console.error("Error fetching the webpage:", error);
     res.status(500).send("Error extracting content");
