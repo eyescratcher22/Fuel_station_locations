@@ -35,7 +35,7 @@
     if (extractedContent) {
       const { content } = JSON.parse(extractedContent);
       const contentDiv = document.getElementById("content");
-      contentDiv.innerHTML = ""; // Clear the loading message
+      contentDiv.innerHTML = "";
 
       content.forEach((item) => {
         if (item.type === "text") {

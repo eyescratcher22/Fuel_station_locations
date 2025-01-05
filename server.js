@@ -17,10 +17,10 @@ app.get("/extract", async (req, res) => {
     const response = await axios.get(url);
     const $ = cheerio.load(response.data);
 
-    // Remove unwanted elements (scripts, styles, and links)
+  
     $("script, style, link, iframe, nav, footer, header, a").remove();
 
-    // Extract paragraphs, headers, and images
+   
     const content = [];
     $("body *").each((i, el) => {
       const tagName = $(el).prop("tagName").toLowerCase();
