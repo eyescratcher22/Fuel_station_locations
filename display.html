@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Extracted Content</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+
+  <title >Extracted Content</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -21,10 +23,45 @@
     .text {
       margin: 20px;
     }
+    #font-select {
+      margin-top: 10px;
+      padding: 10px 15px;
+      font-size: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px #fff(0, 0, 0, 0.1);
+      transition: all 0.6s ease;
+    }
+
+    #font-select:hover {
+      border-color: #888;
+      box-shadow: 0 4px 8px #fff(0, 0, 0, 0.15);
+    }
+
+    #font-select:focus {
+      outline: none;
+      border-color: #fff;
+      box-shadow: 0 4px 8px #fff(0, 123, 255, 0.5);
+    }
+    .exc{
+      text-align: center;
+    }
+
   </style>
 </head>
 <body>
-  <h1>Extracted Content</h1>
+  <h1 class="exc">Extracted Content</h1>
+  <label for="font-select">Choose a font:</label>
+  <select id="font-select">
+    <option value="'Roboto', sans-serif">Roboto</option>
+    <option value="'Open Sans', sans-serif">Open Sans</option>
+    <option value="Arial">Arial</option>
+    <option value="Georgia">Georgia</option>
+    <option value="Times New Roman">Times New Roman</option>
+    <option value="Courier New">Courier New</option>
+    <option value="Verdana">Verdana</option>
+  </select>
   <div id="content">
     <p>Loading content...</p>
   </div>
@@ -53,6 +90,15 @@
     } else {
       document.getElementById("content").innerHTML = "<p>No content available.</p>";
     }
+
+    const fontSelect = document.getElementById('font-select');
+    const content = document.getElementById('content');
+
+    fontSelect.addEventListener('change', function () {
+    const selectedFont = fontSelect.value;
+    content.style.fontFamily = selectedFont;
+});
+
   </script>
 </body>
 </html>
