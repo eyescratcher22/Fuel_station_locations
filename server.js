@@ -1,11 +1,11 @@
-const express = require("express");
+const express = require("express");                                                   
 const axios = require("axios");
-const cheerio = require("cheerio");
-const cors = require("cors");
+const cheerio = require("cheerio");      
+const cors = require("cors");   
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const app = express(); 
+app.use(cors()); 
+app.use(express.json()); 
 
 app.get("/extract", async (req, res) => {
   const { url } = req.query;
@@ -18,7 +18,7 @@ app.get("/extract", async (req, res) => {
     const $ = cheerio.load(response.data);
 
   
-    $("script, style, link, iframe, nav, footer, header, a").remove();
+    $("script, style, iframe, nav, footer, header, a").remove();
 
    
     const content = [];

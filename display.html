@@ -84,14 +84,13 @@
     <p>Loading content...</p>
   </div>
 
-  <div id="audio-player">
+    <div id="audio-player">
     <label for="audio">White Noise:</label>
     <audio id="audio" controls>
-      <source src="design elements\Study with White Noise  1 Hour Focus Ambience for Homework, Reading or Test Prep.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
+    <source src="design elements\Study with White Noise  1 Hour Focus Ambience for Homework, Reading or Test Prep.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
     </audio>
-  </div>
-  
+    </div>
 
   <script>
     const extractedContent = localStorage.getItem("extractedContent");
@@ -125,7 +124,7 @@
     const selectedFont = fontSelect.value;
     content.style.fontFamily = selectedFont;
 });
-
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="P6p-XPM9Q8Jy2FxcfVnv8";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
   </script>
 </body>
 </html>
