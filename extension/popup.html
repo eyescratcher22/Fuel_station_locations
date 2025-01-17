@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PERM Web Extension</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      width: 320px;
+      height: auto;
+      background-color: black;
+      color: white;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .top-section {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      width: 50px;
+      height: auto;
+    }
+
+    .open-website {
+      color: #ae8957;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .open-website:hover {
+      text-decoration: underline;
+      color: white;
+    }
+
+    .input {
+      width: 90%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 15px;
+      background-color: #2d2d2d;
+      color: white;
+      font-size: 14px;
+    }
+
+    .input::placeholder {
+      color: #aaaaaa;
+    }
+
+    button {
+      width: 90%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #ae8957;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all ease 0.2s;
+    }
+
+    button:hover {
+      background-color: white;
+      color: #ae8957;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-section">
+    <img class="logo" src="C:\Amitesh\react_app\Distraction-free-reading-mode\design elements\logo.png" alt="Logo">
+    <a class="open-website" href="#">Open Website</a>
+  </div>
+
+  <input class="input" type="text" placeholder="Enter link here">
+  <button id="send-link">Fetch Content</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
