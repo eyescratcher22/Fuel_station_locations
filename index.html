@@ -1,54 +1,170 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en" class="dark-theme">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PERM!</title>
-    <link rel="stylesheet" href="styles.css">
-
+    <title>PERM - Distraction Free Reading</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  </head>
-  <body>
-    <header>
-      <a href="#" class="logo">
-        <img src="design elements/logo.png">
-      </a>
-
-      <ul class="navlist">
-        <li><a href="#">Home</a></li>
-        <li><a href="design elements\Amitesh Distraction-Free_Reading_Mode_Proposal.pdf">My Proposal</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <div class="right-corner">
-        <div class="bx bx-menu" id="menu-icon"></div> 
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="hero-text">
-        <h5>Hola Amigos!</h5>
-        <h1>Enter Website below:</h1>
-        <div class="main-hero">
-          <input id="urlInput" type="text" placeholder="Enter website URL">
-          <button onclick="fetchContent()">Remove Distractions ---></button>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div id="physics-container"></div>
+    <div class="side-menu">
+        <div class="menu-content glass">
+            <div class="menu-header">
+                <h2>Menu</h2>
+                <button class="close-menu"><i class="bx bx-x"></i></button>
+            </div>
+            <nav class="menu-nav">
+                <a href="#" class="menu-item">
+                    <i class="bx bx-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="bx bx-book-reader"></i>
+                    <span>Reader</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="bx bx-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="bx bx-info-circle"></i>
+                    <span>About</span>
+                </a>
+            </nav>
+            <div class="menu-footer">
+                <div class="theme-selector">
+                    <span>Theme</span>
+                    <div class="theme-toggle">
+                        <div class="toggle-ball"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="hero-img">
-        <img src="design elements/hero.png">
-      </div>
-    </section>
-
-    <div class="icons">
-      <a href="https://github.com/eyescratcher22" target="_blank"><i class="ri-github-fill"></i></a>
-      <a href="https://www.instagram.com/_._amitesh_._/?__pwa=1#" target="_blank"><i class="ri-instagram-line"></i></a>
-      <a href="https://www.youtube.com/@amiteshIITR" target="_blank"><i class="ri-youtube-fill"></i></a>
     </div>
 
+    <div class="page-overlay"></div>
+    <header class="glass-nav">
+        <div class="nav-content">
+            <button class="menu-trigger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="#" class="logo">
+                <img src="design elements/logo.png" alt="PERM Logo">
+                <span class="logo-text">PERM</span>
+            </a>
+
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="#" class="nav-item active"><span>Home</span></a></li>
+                    <li><a href="#" class="nav-item"><span>Proposal</span></a></li>
+                    <li><a href="#" class="nav-item"><span>About</span></a></li>
+                    <li><a href="#" class="nav-item"><span>Contact</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="welcome-popup glass">
+            <h3>Welcome to PERM!</h3>
+            <p>Transform any website into a distraction-free reading experience.</p>
+            <button class="popup-close"><i class="bx bx-x"></i></button>
+        </div>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text-container">
+                    <h5 class="animated-subtitle">Welcome to PERM</h5>
+                    <h1 class="animated-title">Transform Your Reading Experience</h1>
+                    <p class="hero-description">Enter any website URL below to experience distraction-free reading mode</p>
+                    
+                    <div class="search-container glass">
+                        <div class="input-wrapper">
+                            <i class="bx bx-link-alt"></i>
+                            <input type="text" id="urlInput" placeholder="Paste your URL here...">
+                        </div>
+                        <button class="primary-btn" onclick="fetchContent()">
+                            <span>Transform</span>
+                            <i class="bx bx-right-arrow-alt"></i>
+                        </button>
+                    </div>
+                    <div class="interactive-tips">
+                        <div class="tip-card glass" data-tip="1">
+                            <i class="bx bx-bulb"></i>
+                            <span>Hover me!</span>
+                        </div>
+                        <div class="tip-card glass" data-tip="2">
+                            <i class="bx bx-message-square-detail"></i>
+                            <span>Click me!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img src="design elements/hero.png" alt="Hero Image" class="floating">
+                    <div class="blob-animation"></div>
+                </div>
+            </div>
+        </section>
+        <section class="features glass">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-tilt>
+                    <i class="bx bx-book-reader"></i>
+                    <h3>Clean Reading</h3>
+                    <p>Removes all distracting elements for a focused reading experience</p>
+                </div>
+                <div class="feature-card" data-tilt>
+                    <i class="bx bx-paint"></i>
+                    <h3>Custom Styling</h3>
+                    <p>Personalize fonts, colors, and layouts to your preference</p>
+                </div>
+                <div class="feature-card" data-tilt>
+                    <i class="bx bx-devices"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Perfect reading experience across all devices</p>
+                </div>
+            </div>
+        </section>
+        <section class="physics-playground">
+            <h2>Play with Physics</h2>
+            <div class="playground-container glass">
+            </div>
+        </section>
+    </main>
+    <div class="social-links glass">
+        <a href="https://github.com/eyescratcher22" target="_blank" class="social-icon">
+            <i class="ri-github-fill"></i>
+        </a>
+        <a href="https://www.instagram.com/_._amitesh_._/?__pwa=1#" target="_blank" class="social-icon">
+            <i class="ri-instagram-line"></i>
+        </a>
+        <a href="https://www.youtube.com/@amiteshIITR" target="_blank" class="social-icon">
+            <i class="ri-youtube-fill"></i>
+        </a>
+    </div>
+    <div class="tooltips-container"></div>
+    <div class="loading-overlay">
+        <div class="loader"></div>
+    </div>
+    <div class="toast-container"></div>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>
