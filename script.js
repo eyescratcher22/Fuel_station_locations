@@ -29,7 +29,7 @@ descriptionDiv.innerHTML = `
 
 playgroundSection.insertBefore(descriptionDiv, playgroundSection.firstChild);
 
-// physics obejcts keliye
+
 function createPhysicsObjects() {
     const world = engine.world;
     
@@ -130,7 +130,7 @@ function createPhysicsObjects() {
     Matter.World.add(world, [ground, leftWall, rightWall, ...objects]);
 }
 
-// Initialize physics ka hai ye dekhlena mast chiz hai matter js
+
 Matter.Engine.run(engine);
 Matter.Render.run(render);
 createPhysicsObjects();
@@ -164,7 +164,7 @@ menuTrigger.addEventListener('click', toggleMenu);
 closeMenu.addEventListener('click', toggleMenu);
 pageOverlay.addEventListener('click', toggleMenu);
 
-// Welcome Popup
+
 const welcomePopup = document.querySelector('.welcome-popup');
 const popupClose = document.querySelector('.popup-close');
 
@@ -180,7 +180,7 @@ popupClose.addEventListener('click', () => {
     pageOverlay.classList.remove('active');
 });
 
-// first visit meh jo welcome msg tha
+
 if (!localStorage.getItem('welcomed')) {
     showWelcomePopup();
     localStorage.setItem('welcomed', 'true');
@@ -198,7 +198,7 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// background elements
+
 document.querySelectorAll('.magnetic').forEach(element => {
     element.addEventListener('mousemove', (e) => {
         const bound = element.getBoundingClientRect();
@@ -221,7 +221,7 @@ document.querySelectorAll('.magnetic').forEach(element => {
     });
 });
 
-// tips ke liye
+
 document.querySelectorAll('.tip-card').forEach(tip => {
     tip.addEventListener('click', () => {
         const tipNumber = tip.dataset.tip;
@@ -229,7 +229,7 @@ document.querySelectorAll('.tip-card').forEach(tip => {
     });
 });
 
-// woh chote notification ka hai ye
+
 function showToast(message, type = 'info') {
     const toast = document.createElement('div');
     toast.classList.add('toast', type);
@@ -245,14 +245,13 @@ function showToast(message, type = 'info') {
     }, 3000);
 }
 
-// theme select ka hai ye
+
 const themeToggle = document.querySelector('.theme-toggle');
 themeToggle.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark-theme');
     themeToggle.classList.toggle('active');
 });
 
-// Particles.js ka hai ye
 particlesJS('particles-js', {
     particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -288,7 +287,7 @@ particlesJS('particles-js', {
 });
 
 
-// ye hai tere floating objects
+
 function createBlobs() {
     const colors = ['#ae8957', '#d4af37', '#c69b68'];
     const container = document.createElement('div');
