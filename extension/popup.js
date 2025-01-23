@@ -10,12 +10,21 @@ async function fetchContent() {
     if (!response.ok) throw new Error("Failed to fetch content");
 
     const data = await response.json();
-    
     localStorage.setItem("extractedContent", JSON.stringify(data));
+    chrome.tabs.create({
+      url: `http://localhost:3000/display.html?url=${encodeURIComponent(url)}`
+    });
 
-    window.location.href = "display.html";
   } catch (error) {
-    console.error("Error fetching content:", error);
-    alert("Failed to load content. Please try again.");
+    console.error("Error fetching content:", error.message);
+    alert(`Failed to load content. Error: ${error.message}`);
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("send-link").addEventListener("click", fetchContent);
+
+  document.querySelector(".open-website").addEventListener("click", () => {
+    chrome.tabs.create({ url: "http://localhost:3000/" });
+  });
+});

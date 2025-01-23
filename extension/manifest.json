@@ -3,8 +3,8 @@
   "name": "PERM Web Extension",
   "version": "0.0.1",
   "description": "Copies the link of the current website into my local file directly",
-  "permissions": ["activeTab", "scripting", "file://*/*"],
-  "host_permissions": ["file://*/*"],
+  "permissions": ["activeTab", "scripting", "file://*/*", "tabs"],
+  "host_permissions": ["file://*/*", "http://localhost:3000/*"],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {

@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PERM Web Extension</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 20px;
-      width: 320px;
-      height: auto;
-      background-color: black;
+      width: 360px;
+      background-color: #121212;
       color: white;
-      border-radius: 20px;
+      border-radius: 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+      overflow: hidden;
     }
 
     .top-section {
@@ -23,58 +25,101 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .logo {
       width: 50px;
       height: auto;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
 
     .open-website {
       color: #ae8957;
       text-decoration: none;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 600;
       margin-left: 10px;
+      transition: color 0.3s ease;
     }
 
     .open-website:hover {
+      color: #fff;
       text-decoration: underline;
-      color: white;
     }
 
     .input {
       width: 90%;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-      margin-bottom: 15px;
-      background-color: #2d2d2d;
-      color: white;
-      font-size: 14px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background-color: #1e1e1e;
+      color: #ddd;
+      font-size: 15px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .input:focus {
+      background-color: #333;
+      border-color: #ae8957;
+      outline: none;
     }
 
     .input::placeholder {
-      color: #aaaaaa;
+      color: #777;
     }
 
     button {
       width: 90%;
-      padding: 12px;
+      padding: 14px;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 700;
       color: white;
       background-color: #ae8957;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all ease 0.2s;
+      transition: all 0.2s ease;
     }
 
     button:hover {
-      background-color: white;
+      background-color: #fff;
       color: #ae8957;
+      transform: scale(1.05);
+    }
+
+    .tooltip {
+      position: absolute;
+      font-size: 12px;
+      color: #999;
+      background-color: #222;
+      padding: 8px;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+      display: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .input:focus + .tooltip {
+      display: block;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #aaa;
+    }
+    
+    @media (max-width: 400px) {
+      body {
+        width: 280px;
+      }
+
+      .input, button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -82,12 +127,34 @@
 <body>
   <div class="top-section">
     <img class="logo" src="C:\Amitesh\react_app\Distraction-free-reading-mode\design elements\logo.png" alt="Logo">
-    <a class="open-website" href="#">Open Website</a>
+    <a class="open-website" href="https://lcoalhost:3000">Open Website</a>
   </div>
 
-  <input class="input" type="text" placeholder="Enter link here">
-  <button id="send-link" onclick="fetchContent()">Fetch Content</button>
+  <input id="urlInput" class="input" type="text" placeholder="Enter link here" />
+  <div class="tooltip">Paste the link to transform it.</div>
+  <button id="send-link">Transform</button>
 
-  <script src="popup.js"></script>
+  <div class="footer">
+    <p>Powered by PERM Extension</p>
+  </div>
+
+  <script src="/popup.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const url = urlParams.get('url');
+
+    document.getElementById('urlInput').value = url || '';
+
+    document.getElementById('send-link').addEventListener('click', function() {
+      const link = document.getElementById('urlInput').value.trim();
+      if (link) {
+        console.log("Link to Transform:", link);
+      } else {
+        alert("Please enter a valid URL.");
+      }
+    });
+
+    console.log("Extracted URL:", url);
+  </script>
 </body>
 </html>

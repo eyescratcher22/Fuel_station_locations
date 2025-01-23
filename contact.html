@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="contact-styles.css">
+</head>
+<body>
+   <section class="contact">
+      <div class="content">
+         <h2 style="color: #ae8957; font-weight: 600;">Contact Us!</h2>
+         <p style="text-align: center;"> Drop us a message, and we'll get back to you as soon as possible!"</p>
+      </div>
+      <div class="container">
+         <div class="contactInfo">
+            <div class="box">
+               <div class="icon">
+                  <i class="fa-solid fa-envelope" style="color:white"></i>
+               </div>
+               <div class="text">
+                  <h3>Email</h3>
+                  <p>amiteshsonwani22@gmail.com</p>
+               </div>
+            </div>
+         </div>
+         <div class="contactForm">
+            <form action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="a213bf9e-9484-419c-ac7e-6c946af49e45">
+              <h2>Send Message</h2>
+              <div class="inputBox">
+                <input type="text" name="name" required>
+                <span>Full Name</span>
+              </div>
+              <div class="inputBox">
+                <input type="email" name="email" required>
+                <span>Email</span>
+              </div>
+              <div class="inputBox">
+                <textarea name="message" required></textarea>
+                <span>Type your Message...</span>
+              </div>
+              <div class="inputBox">
+                <input type="submit" value="Send">
+              </div>
+            </form>
+         </div>
+      </div>
+   </section>
+</body>
+</html>

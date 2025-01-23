@@ -1,11 +1,18 @@
-const express = require("express");                                                   
+const express = require("express");
 const axios = require("axios");
-const cheerio = require("cheerio");      
-const cors = require("cors");   
+const cheerio = require("cheerio");
+const cors = require("cors");
+const path = require("path");
 
-const app = express(); 
-app.use(cors()); 
-app.use(express.json()); 
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use(express.static(path.join(__dirname))); // Serve static files from the root directory
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html")); // Serve the index.html directly from the root
+});
 
 app.get("/extract", async (req, res) => {
   const { url } = req.query;
@@ -17,10 +24,8 @@ app.get("/extract", async (req, res) => {
     const response = await axios.get(url);
     const $ = cheerio.load(response.data);
 
-  
     $("script, style, iframe, nav, footer, header, a").remove();
 
-   
     const content = [];
     $("body *").each((i, el) => {
       const tagName = $(el).prop("tagName").toLowerCase();
