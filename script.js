@@ -225,7 +225,7 @@ document.querySelectorAll('.magnetic').forEach(element => {
 document.querySelectorAll('.tip-card').forEach(tip => {
     tip.addEventListener('click', () => {
         const tipNumber = tip.dataset.tip;
-        showToast(`Tip ${tipNumber}: Here's a helpful tip about using PERM!`, 'success');
+        showToast(`Tip ${tipNumber}: Stay Consistent, You are nearly there`, 'success');
     });
 });
 

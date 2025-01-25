@@ -8,10 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname))); // Serve static files from the root directory
+app.use(express.static(path.join(__dirname))); 
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html")); // Serve the index.html directly from the root
+  res.sendFile(path.join(__dirname, "index.html")); 
 });
 
 app.get("/extract", async (req, res) => {
